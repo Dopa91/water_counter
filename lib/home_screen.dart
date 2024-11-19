@@ -33,9 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
     await prefs.setInt("counter", _counter);
   }
 
-  // TODO: This should be implemented.
+  // TODO: This should be implemented. DONE
   // ignore: unused_element
-  void _decrementCounter() {}
+  void _decrementCounter() async {
+    setState(() {
+      _counter--;
+    });
+    await prefs.setInt("counter", _counter);
+  }
 
   void _resetCounter() async {
     setState(() {
@@ -73,8 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: EdgeInsets.only(left: 32.0, right: 32.0),
               child: WCButton(
-                // TODO: Missing function to remove a drink (_decrementCounter).
-                onPressed: null,
+                // TODO: Missing function to remove a drink (_decrementCounter). DONE
+                onPressed: _decrementCounter,
                 text: "Getränk entfernen",
               ),
             ),
