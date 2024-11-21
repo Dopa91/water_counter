@@ -25,34 +25,37 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _loadCounter() async {
-    final rememberedCounter = await prefs.getInt("counter") ?? 0;
+    final rememberedCounter = await widget.repository.getCounter();
     setState(() {
       _counter = rememberedCounter;
     });
   }
 
   void _incrementCounter() async {
+    await widget.repository.incrementCounter();
+    final updatedCounter = await widget.repository.getCounter();
     setState(() {
-      _counter++;
+      _counter = updatedCounter;
     });
-    await prefs.setInt("counter", _counter);
   }
 
   // TODO: This should be implemented. DONE
   // ignore: unused_element
   void _decrementCounter() async {
+    await widget.repository.decrementCounter();
+    final updatedCounter = await widget.repository.getCounter();
     setState(() {
-      _counter--;
+      _counter = updatedCounter;
     });
-    await prefs.setInt("counter", _counter);
   }
 
   void _resetCounter() async {
-    setState(() {
-      _counter = 0;
-    });
+    await widget.repository.resetCounter();
+    final updatedCounter = await widget.repository.getCounter();
 
-    await prefs.setInt("counter", _counter);
+    setState(() {
+      _counter = updatedCounter;
+    });
   }
 
   @override
