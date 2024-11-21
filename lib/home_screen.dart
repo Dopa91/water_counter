@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:water_counter/database_repository.dart';
-import 'package:water_counter/mock_database.dart';
+import 'package:water_counter/repositories/database_repository.dart';
+import 'package:water_counter/repositories/shared_preferences_repository.dart';
 import 'package:water_counter/w_c_button.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
-  final DatabaseRepository repository = MockDatabase();
+  final DatabaseRepository repository = SharedPreferencesRepository();
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
