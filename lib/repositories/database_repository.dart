@@ -1,5 +1,3 @@
-import 'package:water_counter/models/drink.dart';
-
 abstract class DatabaseRepository {
   Future<int> getCounter();
 
